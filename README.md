@@ -7,7 +7,10 @@ This repository contains automated tests for Ozon.ru using the [Playwright](http
 ## Features
 
 - **Automated Login Tests**: Verifies the user authentication process with valid and invalid credentials.
-- **Responsive Design Validation**: Runs tests on multiple devices and screen sizes.
+
+- **Newman Integration**:
+  - Execute Postman collections directly from the repository.
+  - Generate detailed HTML reports using `newman-reporter-htmlextra`.
 
 ---
 
@@ -18,6 +21,7 @@ This repository contains automated tests for Ozon.ru using the [Playwright](http
 - Node.js >= 16.x
 - Playwright >= 1.33.0
 - Visual Studio Code (optional)
+- Newman CLI and HTML reporter (installed with the repository).
 
 ### Steps
 

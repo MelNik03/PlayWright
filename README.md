@@ -1,6 +1,6 @@
-# Ozon Automation Tests
+# Ozon PlayWright Tests
 
-This repository contains automated tests for Ozon.ru using the [Playwright](https://playwright.dev/) framework. These tests are designed to verify the critical functionalities of the Ozon platform, such as user authentication, product search, and cart operations.
+This repository contains automated tests for Ozon.ru using the [Playwright](https://playwright.dev/) framework. These tests are designed to verify functionalities of the Ozon platform, such as user authentication and authorization.
 
 ---
 

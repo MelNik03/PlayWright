@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "3ba8748d-e498-4b77-8cbd-f10bba9eb53c",
+		"name": "Ozon API Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39834465",
+		"_collection_link": "https://iuca11.postman.co/workspace/IUCA-Workspace~14f4280b-c733-47e5-8974-3c76c07f719b/collection/39834465-3ba8748d-e498-4b77-8cbd-f10bba9eb53c?action=share&source=collection_link&creator=39834465"
+	},
+	"item": [
+		{
+			"name": "Response Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testuser@example.com\",\r\n    \"password\": \"TestPassword123!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.ozon.ru/?_fr=1732019330",
+					"protocol": "https",
+					"host": [
+						"www",
+						"ozon",
+						"ru"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "_fr",
+							"value": "1732019330"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Response is JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response is JSON\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "09d56fe9-c9b0-4f80-9174-d483a478f1b4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 09d56fe9-c9b0-4f80-9174-d483a478f1b4",
+						"type": "text"
+					},
+					{
+						"key": "Client-Id",
+						"value": "2465659",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Api-Key",
+						"value": "Bearer 09d56fe9-c9b0-4f80-9174-d483a478f1b4",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"filter\": {\r\n    \"visibility\": \"ALL\"\r\n  },\r\n  \"last_id\": \"\",\r\n  \"limit\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-seller.ozon.ru/v1/product",
+					"protocol": "https",
+					"host": [
+						"api-seller",
+						"ozon",
+						"ru"
+					],
+					"path": [
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JSON Model",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Проверка, что ответ является валидным JSON\r",
+							"pm.test(\"Response is valid JSON\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Дополнительные проверки на структуру данных\r",
+							"pm.test(\"Products field structure is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if (jsonData.products && jsonData.products.length > 0) {\r",
+							"        // Проверка, что каждый продукт содержит поле 'id' и 'name'\r",
+							"        jsonData.products.forEach(function (product) {\r",
+							"            pm.expect(product).to.have.property(\"id\");\r",
+							"            pm.expect(product).to.have.property(\"name\");\r",
+							"            pm.expect(product).to.have.property(\"price\");\r",
+							"            pm.expect(product).to.have.property(\"visibility\");\r",
+							"        });\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "09d56fe9-c9b0-4f80-9174-d483a478f1b4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 09d56fe9-c9b0-4f80-9174-d483a478f1b4",
+						"type": "text"
+					},
+					{
+						"key": "Client-Id",
+						"value": "2465659",
+						"type": "text"
+					},
+					{
+						"key": "Api-Key",
+						"value": "Bearer 09d56fe9-c9b0-4f80-9174-d483a478f1b4",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"id\": 12345,\r\n            \"name\": \"Product Name\",\r\n            \"price\": 1000,\r\n            \"visibility\": \"VISIBLE\"\r\n        },\r\n        {\r\n            \"id\": 67890,\r\n            \"name\": \"Another Product\",\r\n            \"price\": 2000,\r\n            \"visibility\": \"VISIBLE\"\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-seller.ozon.ru/app/products",
+					"protocol": "https",
+					"host": [
+						"api-seller",
+						"ozon",
+						"ru"
+					],
+					"path": [
+						"app",
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -9,10 +9,10 @@ export class OzonPage {
 
     // Открываем форму авторизации
     async openFormAuth() {
-        //await this.page.waitForSelector('.df8_47_9');
-        await this.page.locator('.d4019-a').click();
-       // await this.page.waitForSelector('.df8_47_9');
-        await this.page.locator('.d4019-a').click();
+        await this.page.waitForSelector('.ac5n_47');
+        await this.page.locator('.ac5n_47').click();
+        await this.page.waitForSelector('.ac5n_47');
+        await this.page.locator('.ac5n_47').click();
     }
 
     // Заполняем поля для авторизации
